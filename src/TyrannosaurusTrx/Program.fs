@@ -53,8 +53,7 @@ let resolveTrxPath trxPath recurse =
 let resolveTrxPaths trxPaths recurse = 
     trxPaths |> List.collect (fun x -> resolveTrxPath x recurse)    
     
-[<EntryPoint>]
-let main argv = 
+let runProgram argv =
     let errorHandler = ProcessExiter(colorizer = function ErrorCode.HelpText -> None | _ -> Some ConsoleColor.Red)
     let parser = ArgumentParser.Create<CmdArgs>(programName = "t-trx", errorHandler = errorHandler)
     
@@ -68,5 +67,13 @@ let main argv =
             match resolveTrxPaths (argz.GetResult(Trx_Paths)) (argz.Contains(Recurse)) with
             | [] -> Error CouldNotFindAnyTrxPaths
             | trxFullPaths -> 
-                Ok ()
+                let mergePath
+                App.runTrxPaths trxFullPaths
     |> getExitCode
+
+[<EntryPoint>]
+let main argv = 
+
+    runProgram [| "-p"; "C:/temp/trx-files"; "-m"; "C:/temp/trx-files.trx" |]
+
+    //runProgram argv
