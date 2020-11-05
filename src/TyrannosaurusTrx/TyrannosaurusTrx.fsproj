@@ -13,6 +13,10 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Argu" Version="6.1.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\TyrannosaurusTrx.Trxer\TyrannosaurusTrx.Trxer.csproj" />
     <ProjectReference Include="..\TyrannosaurusTrx.TrxMerger\TyrannosaurusTrx.TrxMerger.csproj" />
   </ItemGroup>
