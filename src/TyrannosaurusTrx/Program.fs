@@ -1,11 +1,7 @@
 ﻿open System
 open System.IO
 open Argu
-
-type CliError =
-    | TrxPathsNotSpecified
-    | MergeOrReportNotSpecified
-    | CouldNotFindAnyTrxPaths
+open App
 
 type CmdArgs =
     | [<AltCommandLine("-p")>] Trx_Paths of paths:string list
@@ -29,29 +25,7 @@ let getExitCode result =
         | TrxPathsNotSpecified -> 1
         | MergeOrReportNotSpecified -> 1
         | CouldNotFindAnyTrxPaths -> 1
-
-let log (line: string) =
-    Console.WriteLine line
-    ()
-
-let resolveTrxPath trxPath recurse = 
-    let fullPath = Path.GetFullPath trxPath
-    let logFile path = log (sprintf "File path: '%s'" path)
-    let logDir path = log (sprintf "Directory path: '%s'" path)
-    
-    if Directory.Exists fullPath then
-        logDir fullPath
-        let searchOpts = if recurse then SearchOption.AllDirectories else SearchOption.TopDirectoryOnly
-        let files = Directory.GetFiles(fullPath, "*.trx", searchOpts) |> Array.toList
-        for p in files do logFile p
-        files
-    elif File.Exists fullPath then
-        logFile fullPath
-        [ fullPath ]
-    else []
-
-let resolveTrxPaths trxPaths recurse = 
-    trxPaths |> List.collect (fun x -> resolveTrxPath x recurse)    
+        | MultipleTrxFilesFoundAndMergePathNotSpecified -> 1
     
 let runProgram argv =
     let errorHandler = ProcessExiter(colorizer = function ErrorCode.HelpText -> None | _ -> Some ConsoleColor.Red)
@@ -63,12 +37,15 @@ let runProgram argv =
     else
         if not(argz.Contains(Report_Out)) && not(argz.Contains(Merge_Out)) then
             Error MergeOrReportNotSpecified
-        else 
-            match resolveTrxPaths (argz.GetResult(Trx_Paths)) (argz.Contains(Recurse)) with
-            | [] -> Error CouldNotFindAnyTrxPaths
-            | trxFullPaths -> 
-                let mergePath
-                App.runTrxPaths trxFullPaths
+        else
+            let mergePathOpt = if argz.Contains(Merge_Out) then Some (argz.GetResult(Merge_Out)) else None
+            let reportPathOpt = if argz.Contains(Report_Out) then Some (argz.GetResult(Report_Out)) else None
+            let mergeFiles = runMergeFiles mergePathOpt
+            let generateReport = runGenerateReport reportPathOpt
+            
+            resolveTrxPaths (argz.GetResult(Trx_Paths)) (argz.Contains(Recurse))
+            |> Result.bind mergeFiles
+            |> Result.bind generateReport
     |> getExitCode
 
 [<EntryPoint>]
