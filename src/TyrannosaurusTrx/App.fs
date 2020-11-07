@@ -57,9 +57,6 @@ let runMergeFiles (mergePathOpt: string option) (trxPaths: string list) =
     mergeTrxFiles trxPaths
     |> Result.bind (fun doc ->
         let mergedContents = doc.ToString()
-        
-        let html = TyrannosaurusTrx.Trxer.Program.TransformXml doc
-        
         match mergePathOpt with
         | NotSpecified -> Ok doc
         | ExistingDirectory dir -> 
@@ -83,6 +80,8 @@ let runMergeFiles (mergePathOpt: string option) (trxPaths: string list) =
     )
     
 let runGenerateReport (reportPathOpt: string option) (doc: XDocument) =
+    let html = TyrannosaurusTrx.Trxer.Program.TransformXml doc
+    File.WriteAllText("C:/temp/Some.html", html)
     match reportPathOpt with
     | None -> Ok ()
     | Some mergePath -> Ok ()

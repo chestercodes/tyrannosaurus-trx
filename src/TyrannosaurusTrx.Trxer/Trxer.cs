@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Xsl;
@@ -44,11 +45,19 @@ namespace TyrannosaurusTrx.Trxer
         public static string TransformXml(XDocument trxFile)
         {
             var xmlReader = XmlReader.Create(new StringReader(trxFile.ToString()));
-            MemoryStream stream = new MemoryStream();
-            var xmlWriter = XmlWriter.Create(stream);
+            //MemoryStream stream = new MemoryStream();
+            var sb = new StringBuilder();
+            var settings = new XmlWriterSettings() { 
+                
+            };
+            var xmlWriter = XmlWriter.Create(sb, settings);
             Transform(xmlReader, xmlWriter);
-            StreamReader reader = new StreamReader(stream);
-            string text = reader.ReadToEnd();
+
+            //xmlWriter.Flush();
+            //stream.Position = 0;
+
+            //StreamReader reader = new StreamReader(stream);
+            string text = sb.ToString();
             return text;
         }
 
@@ -61,8 +70,8 @@ namespace TyrannosaurusTrx.Trxer
             XmlDocument xslDoc = new XmlDocument();
             Console.WriteLine("Loading xslt template...");
             xslDoc.Load(ResourceReader.StreamFromResource(XSLT_FILE));
-            MergeCss(xslDoc);
-            MergeJavaScript(xslDoc);
+            //MergeCss(xslDoc);
+            //MergeJavaScript(xslDoc);
             return xslDoc;
         }
 
