@@ -1,12 +1,14 @@
 ﻿module App
 open System
 open System.IO
+open System.Xml.Linq
 
 type CliError =
     | TrxPathsNotSpecified
     | MergeOrReportNotSpecified
     | CouldNotFindAnyTrxPaths
     | MultipleTrxFilesFoundAndMergePathNotSpecified
+    | FailedToMergeTrxFiles of exn
 
 let log (line: string) = Console.WriteLine line ; ()
 
@@ -40,42 +42,47 @@ let (|NotSpecified|ExistingDirectory|ExistingFile|NonExistingFile|) p =
         | x when Directory.Exists x -> ExistingDirectory path
         | _ -> NonExistingFile path
 
+let mergeTrxFiles trxPaths =
+    try
+        trxPaths
+        |> TRX_Merger.TestRunMerger.MergeTrxFiles
+        |> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
+        |> Ok
+    with
+        | ex -> 
+            sprintf "Error: %A" ex |> log
+            FailedToMergeTrxFiles ex |> Error
+
 let runMergeFiles (mergePathOpt: string option) (trxPaths: string list) =
-    match trxPaths with
-    | [ trxPath ] ->
-        match mergePathOpt with
-        | NotSpecified -> Ok trxPath
-        | ExistingDirectory dir -> 
-            let path = Path.Combine(dir, "merged.trx")
-            File.Copy(trxPath, path) 
-            Ok trxPath
-        | ExistingFile path ->
-            File.Delete path
-            File.Copy(trxPath, path)
-            Ok trxPath
-        | NonExistingFile path ->
-            let dir = Path.GetDirectoryName path
-            if not(Directory.Exists dir) then
-                Directory.CreateDirectory dir |> ignore
-            else ()
-            File.Copy(trxPath, path) 
-            Ok trxPath
-    | trxPaths -> 
-        match mergePathOpt with
-        | NotSpecified ->
-            log "TODO"
-            trxPaths |> List.head |> Ok
-        | ExistingDirectory dir ->
-            log "TODO"
-            trxPaths |> List.head |> Ok
-        | ExistingFile path ->
-            log "TODO"
-            trxPaths |> List.head |> Ok
-        | NonExistingFile path ->
-            log "TODO"
-            trxPaths |> List.head |> Ok
+    mergeTrxFiles trxPaths
+    |> Result.bind (fun doc ->
+        let mergedContents = doc.ToString()
         
-let runGenerateReport (reportPathOpt: string option) (trxPath: string) =
+        let html = TyrannosaurusTrx.Trxer.Program.TransformXml doc
+        
+        match mergePathOpt with
+        | NotSpecified -> Ok doc
+        | ExistingDirectory dir -> 
+            log "TODO"
+            //let path = Path.Combine(dir, "merged.trx")
+            //File.Copy(trxPath, path) 
+            Ok doc
+        | ExistingFile path ->
+            log "TODO"
+            //File.Delete path
+            //File.Copy(trxPath, path)
+            Ok doc
+        | NonExistingFile path ->
+            log "TODO"
+            //let dir = Path.GetDirectoryName path
+            //if not(Directory.Exists dir) then
+            //    Directory.CreateDirectory dir |> ignore
+            //else ()
+            //File.Copy(trxPath, path) 
+            Ok doc
+    )
+    
+let runGenerateReport (reportPathOpt: string option) (doc: XDocument) =
     match reportPathOpt with
     | None -> Ok ()
     | Some mergePath -> Ok ()

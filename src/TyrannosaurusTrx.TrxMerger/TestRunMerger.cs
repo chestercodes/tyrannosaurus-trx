@@ -10,6 +10,16 @@ namespace TRX_Merger
 {
     public static class TestRunMerger
     {
+        public static TestRun MergeTrxFiles(IEnumerable<string> trxFiles)
+        {
+            List<TestRun> runs = new List<TestRun>();
+            foreach (var trx in trxFiles)
+            {
+                runs.Add(TRXSerializationUtils.DeserializeTRX(trx));
+            }
+
+            return MergeTestRuns(runs);
+        }
 
         public static TestRun MergeTRXsAndSave(List<string> trxFiles, string outputFile)
         {

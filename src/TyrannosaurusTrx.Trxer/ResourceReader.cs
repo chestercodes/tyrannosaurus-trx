@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace TrxerConsole
+namespace TyrannosaurusTrx.Trxer
 {
     internal class ResourceReader
     {
@@ -18,8 +18,8 @@ namespace TrxerConsole
 
         internal static Stream StreamFromResource(string name)
         {
-           
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("TrxerConsole." + name);
+            var assembly = Assembly.GetExecutingAssembly();
+            return assembly.GetManifestResourceStream("TyrannosaurusTrx.Trxer.Resources." + name);
        
         }
     }

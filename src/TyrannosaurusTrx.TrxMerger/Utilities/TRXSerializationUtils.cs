@@ -10,8 +10,7 @@ namespace TRX_Merger.Utilities
     {
         private static string ns = "{http://microsoft.com/schemas/VisualStudio/TeamTest/2010}";
 
-        #region Serializers
-        internal static string SerializeAndSaveTestRun(TestRun testRun, string targetPath)
+        public static XDocument SerializeTestRun(TestRun testRun)
         {
             XNamespace xmlns = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
             XDocument doc =
@@ -102,6 +101,13 @@ namespace TRX_Merger.Utilities
 
             doc.Root.SetDefaultXmlNamespace("http://microsoft.com/schemas/VisualStudio/TeamTest/2010");
 
+            return doc;
+        }
+
+        internal static string SerializeAndSaveTestRun(TestRun testRun, string targetPath)
+        {
+            var doc = SerializeTestRun(testRun);
+            
             if (File.Exists(targetPath))
                 File.Delete(targetPath);
 
@@ -111,7 +117,6 @@ namespace TRX_Merger.Utilities
 
             return savedFileInfo.FullName;
         }
-        #endregion
 
         #region Deserializers
         internal static TestRun DeserializeTRX(string trxPath)

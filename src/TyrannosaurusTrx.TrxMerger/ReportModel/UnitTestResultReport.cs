@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Script.Serialization;
+//using System.Web.Script.Serialization;
 using TRX_Merger.TrxModel;
 
 namespace TRX_Merger.ReportModel
@@ -105,7 +105,8 @@ namespace TRX_Merger.ReportModel
 
         public string AsJson()
         {
-            return System.Web.Helpers.Json.Encode(this);
+            throw new Exception("hopefully not needed");
+            //return System.Web.Helpers.Json.Encode(this);
         }
 
         public string FormattedStartTime
