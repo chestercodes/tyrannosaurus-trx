@@ -2,6 +2,7 @@
 open System
 open System.IO
 open System.Xml.Linq
+open TRX_Merger.TrxModel
 
 type CliError =
     | TrxPathsNotSpecified
@@ -46,7 +47,7 @@ let mergeTrxFiles trxPaths =
     try
         trxPaths
         |> TRX_Merger.TestRunMerger.MergeTrxFiles
-        |> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
+        //|> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
         |> Ok
     with
         | ex -> 
@@ -79,8 +80,8 @@ let runMergeFiles (mergePathOpt: string option) (trxPaths: string list) =
             Ok doc
     )
     
-let runGenerateReport (reportPathOpt: string option) (doc: XDocument) =
-    let html = TyrannosaurusTrx.Trxer.Program.TransformXml doc
+let runGenerateReport (reportPathOpt: string option) (testRun: TestRun) =
+    let html =  TRX_Merger.ReportGenerator.TrxReportGenerator.GenerateReport testRun
     File.WriteAllText("C:/temp/Some.html", html)
     match reportPathOpt with
     | None -> Ok ()
