@@ -47,42 +47,47 @@ let mergeTrxFiles trxPaths =
     try
         trxPaths
         |> TRX_Merger.TestRunMerger.MergeTrxFiles
-        //|> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
         |> Ok
     with
         | ex -> 
             sprintf "Error: %A" ex |> log
             FailedToMergeTrxFiles ex |> Error
 
+let getFileName pathOpt dirDefaultName =
+    match pathOpt with
+    | NotSpecified -> None
+    | ExistingDirectory dir -> Path.Combine(dir, dirDefaultName) |> Some
+    | ExistingFile path -> Some path
+    | NonExistingFile path ->
+        let dir = Path.GetDirectoryName path
+        if not(Directory.Exists dir) then
+            Directory.CreateDirectory dir |> ignore
+        else ()
+        Some path
+
 let runMergeFiles (mergePathOpt: string option) (trxPaths: string list) =
+    let fileName = getFileName mergePathOpt "merged.trx"
+
     mergeTrxFiles trxPaths
-    |> Result.bind (fun doc ->
-        let mergedContents = doc.ToString()
-        match mergePathOpt with
-        | NotSpecified -> Ok doc
-        | ExistingDirectory dir -> 
-            log "TODO"
-            //let path = Path.Combine(dir, "merged.trx")
-            //File.Copy(trxPath, path) 
-            Ok doc
-        | ExistingFile path ->
-            log "TODO"
-            //File.Delete path
-            //File.Copy(trxPath, path)
-            Ok doc
-        | NonExistingFile path ->
-            log "TODO"
-            //let dir = Path.GetDirectoryName path
-            //if not(Directory.Exists dir) then
-            //    Directory.CreateDirectory dir |> ignore
-            //else ()
-            //File.Copy(trxPath, path) 
-            Ok doc
+    |> Result.bind (fun testRun ->
+        let mergedContents = 
+            testRun
+            |> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
+            |> fun x -> x.ToString()
+        
+        match fileName with
+        | None -> ()
+        | Some path -> File.WriteAllText(path, mergedContents) 
+        
+        Ok testRun
     )
     
 let runGenerateReport (reportPathOpt: string option) (testRun: TestRun) =
     let html =  TRX_Merger.ReportGenerator.TrxReportGenerator.GenerateReport testRun
-    File.WriteAllText("C:/temp/Some.html", html)
-    match reportPathOpt with
+    let fileName = getFileName reportPathOpt "report.html"
+    let fileName = Some "C:/temp/Some.html"
+    match fileName with
     | None -> Ok ()
-    | Some mergePath -> Ok ()
+    | Some mergePath ->
+        File.WriteAllText(mergePath, html)
+        Ok ()

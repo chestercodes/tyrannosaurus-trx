@@ -51,6 +51,6 @@ let runProgram argv =
 [<EntryPoint>]
 let main argv = 
 
-    runProgram [| "-p"; "C:/temp/trx-files"; "-m"; "C:/temp/trx-files.trx" |]
+    runProgram [| "-p"; "C:/temp/trx-files"; "-m"; "C:/temp/" |]
 
     //runProgram argv
