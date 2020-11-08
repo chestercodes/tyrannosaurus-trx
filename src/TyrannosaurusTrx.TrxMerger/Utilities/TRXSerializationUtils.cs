@@ -128,9 +128,9 @@ namespace TRX_Merger.Utilities
                 XDocument doc = XDocument.Load(trxStream);
                 var run = doc.Root;
 
-                testRun.Id = run.Attribute("id").Value;
-                testRun.Name = run.Attribute("name").Value;
-                testRun.RunUser = run.Attribute("runUser").Value;
+                testRun.Id = run.Attribute("id")?.Value ?? "N/A";
+                testRun.Name = run.Attribute("name")?.Value ?? "N/A";
+                testRun.RunUser = run.Attribute("runUser")?.Value ?? "N/A";
 
                 testRun.Times = DeserializeTimes(doc.Descendants(ns + "Times").FirstOrDefault());
                 testRun.Results = DeserializeResults(doc.Descendants(ns + "UnitTestResult"));
@@ -353,7 +353,7 @@ namespace TRX_Merger.Utilities
 
             return new ErrorInfo
             {
-                Message = err.Descendants(ns + "Message").FirstOrDefault().Value,
+                Message = err.Descendants(ns + "Message").FirstOrDefault()?.Value ?? "N/A",
                 StackTrace = err.Descendants(ns + "StackTrace").FirstOrDefault()?.Value,
             };
         }
@@ -380,10 +380,10 @@ namespace TRX_Merger.Utilities
         {
             return new Times
             {
-                Creation = xElement.Attribute("creation").Value,
-                Finish = xElement.Attribute("finish").Value,
-                Queuing = xElement.Attribute("queuing").Value,
-                Start = xElement.Attribute("start").Value,
+                Creation = xElement.Attribute("creation")?.Value ?? "N/A",
+                Finish = xElement.Attribute("finish")?.Value ?? "N/A",
+                Queuing = xElement.Attribute("queuing")?.Value ?? "N/A",
+                Start = xElement.Attribute("start")?.Value ?? "N/A",
             };
         }
         #endregion
