@@ -7,9 +7,23 @@ namespace TRX_Merger.ReportModel
 {
     public class UnitTestResultReport
     {
-        public UnitTestResultReport(UnitTestResult result)
+        public UnitTestResultReport(UnitTestResult result, string className, string dll)
         {
+            ClassName = className;
+            Dll = dll;
             Result = result;
+
+            if (Result.TestName.Contains('.'))
+            {
+                // Test.Project.TestClass.MethodName
+                TestFullName = Result.TestName;
+            } else
+            {
+                // MethodName
+                TestFullName = $"{ClassName}.{Result.TestName}";
+            }
+
+            ErrorMessage = Result.Output?.ErrorInfo?.Message ?? "";
 
             if (!string.IsNullOrEmpty(Result.Output.StdOut))
             {
@@ -125,9 +139,11 @@ namespace TRX_Merger.ReportModel
             }
         }
 
-        public UnitTestResult Result { get; set; }
-        public string Dll { get; set; }
-        public string ClassName { get; set; }
-        public string ErrorImage { get; set; }
+        public UnitTestResult Result { get; private set; }
+        public string Dll { get; private set; }
+        public string ClassName { get; private set; }
+        public string ErrorImage { get; private set; }
+        public string TestFullName { get; private set; }
+        public string ErrorMessage { get; private set; }
     }
 }

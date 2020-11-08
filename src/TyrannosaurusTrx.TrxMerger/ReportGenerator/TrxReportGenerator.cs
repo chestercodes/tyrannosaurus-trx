@@ -19,7 +19,7 @@ namespace TRX_Merger.ReportGenerator
             if (!string.IsNullOrEmpty(reportTitle))
                 run.Name = reportTitle;
 
-            string template = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportGenerator/trx_report_template.html"));
+            string template = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportGenerator/trx_report_template.cshtml"));
 
             var testRunReport = new TestRunReport(run);
 

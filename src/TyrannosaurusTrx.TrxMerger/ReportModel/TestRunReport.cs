@@ -4,17 +4,6 @@ using TRX_Merger.TrxModel;
 
 namespace TRX_Merger.ReportModel
 {
-    public class TestName
-    {
-        public TestName(string testClass, string testMethod)
-        {
-            TestClass = testClass;
-            TestMethod = testMethod;
-        }
-        public string TestClass { get; }
-        public string TestMethod { get; }
-    }
-
     public class TestRunReport
     {
         public TestRunReport(TestRun run)
@@ -23,17 +12,19 @@ namespace TRX_Merger.ReportModel
             TestClasses = Run.TestDefinitions.Select(td => td.TestMethod.ClassName).Distinct().ToList<string>();
 
             AllFailedTests = new List<UnitTestResultReport>();
-            TestClassReports = new Dictionary<string, TestClassReport>();
+            TestClassReports = new List<TestClassReport>();
             foreach (var testClass in TestClasses)
             {
                 var t = GetTestClassReport(testClass);
-                TestClassReports.Add(testClass, t);
+                TestClassReports.Add(t);
                 AllFailedTests.AddRange(t.Tests.Where(r =>
                 {
                     var isNotPassing = r.Result.Outcome != "Passed";
                     return isNotPassing;
                 }).ToList());
             }
+
+            TestClassReports = TestClassReports.OrderByDescending(x => x.Failed).ToList();
         }
 
         public TestRun Run { get; private set; }
@@ -42,11 +33,11 @@ namespace TRX_Merger.ReportModel
         
         public List<UnitTestResultReport> AllFailedTests { get; private set; }
 
-        public Dictionary<string, TestClassReport> TestClassReports { get; private set; }
+        public List<TestClassReport> TestClassReports { get; private set; }
 
         public string TestClassReportsJson()
         {
-            var test =  System.Text.Json.JsonSerializer.Serialize(TestClassReports.Select(s => s.Value).Select(
+            var test =  System.Text.Json.JsonSerializer.Serialize(TestClassReports.Select(
                 c => 
                     new 
                     { 
@@ -71,12 +62,8 @@ namespace TRX_Merger.ReportModel
             List<UnitTestResultReport> resultReports = new List<UnitTestResultReport>();
             foreach (var r in results)
             {
-                resultReports.Add(
-                    new UnitTestResultReport(r)
-                    { 
-                        ClassName = className,
-                        Dll = Run.TestDefinitions.Where(d => d.Id == r.TestId).FirstOrDefault().TestMethod.CodeBase
-                    });
+                var dll = Run.TestDefinitions.Where(d => d.Id == r.TestId).FirstOrDefault().TestMethod.CodeBase;
+                resultReports.Add(new UnitTestResultReport(r, className, dll));
             }
 
             return new TestClassReport(className, resultReports);

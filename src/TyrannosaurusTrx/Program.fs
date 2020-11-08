@@ -22,9 +22,10 @@ let getExitCode result =
     | Error err ->
         match err with
         | TrxPathsNotSpecified -> 1
-        | MergeOrReportNotSpecified -> 1
-        | CouldNotFindAnyTrxPaths -> 1
-        | FailedToMergeTrxFiles _ -> 1
+        | MergeOrReportNotSpecified -> 2
+        | CouldNotFindAnyTrxPaths -> 3
+        | FailedToMergeTrxFiles _ -> 4
+        | FailedToGenerateReport _ -> 5
     
 let printResult result =
     match result with
@@ -35,6 +36,7 @@ let printResult result =
         | MergeOrReportNotSpecified -> "Need to specify either merge or report"
         | CouldNotFindAnyTrxPaths -> "Could not find any .trx files"
         | FailedToMergeTrxFiles ex -> sprintf "Failed to merge trx files: %A" ex
+        | FailedToGenerateReport ex -> sprintf "Failed to generate report: %A" ex
 
 let runProgram argv =
     let errorHandler = ProcessExiter(colorizer = function ErrorCode.HelpText -> None | _ -> Some ConsoleColor.Red)

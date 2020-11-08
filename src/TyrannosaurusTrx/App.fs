@@ -9,6 +9,7 @@ type CliError =
     | MergeOrReportNotSpecified
     | CouldNotFindAnyTrxPaths
     | FailedToMergeTrxFiles of exn
+    | FailedToGenerateReport of exn
 
 let log (line: string) = Console.WriteLine line ; ()
 
@@ -72,7 +73,8 @@ let runMergeFiles (mergePathOpt: string option) (trxPaths: string list) =
                 testRun
                 |> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
                 |> fun x -> x.ToString()
-            File.WriteAllText(path, mergedContents) 
+            File.WriteAllText(path, mergedContents)
+            log (sprintf "Written merged trx files to '%s'" path)
         
         Ok testRun
     )
@@ -81,6 +83,10 @@ let runGenerateReport (reportPathOpt: string option) (testRun: TestRun) =
     match getFileName reportPathOpt "report.html" with
     | None -> Ok ()
     | Some mergePath ->
-        let html =  TRX_Merger.ReportGenerator.TrxReportGenerator.GenerateReport testRun
-        File.WriteAllText(mergePath, html)
-        Ok ()
+        try
+            let html =  TRX_Merger.ReportGenerator.TrxReportGenerator.GenerateReport testRun
+            File.WriteAllText(mergePath, html)
+            log (sprintf "Written generated report to '%s'" mergePath)
+            Ok ()
+        with
+            | ex -> FailedToGenerateReport ex |> Error
