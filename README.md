@@ -1,4 +1,10 @@
 # tyrannosaurus-trx
 
-a shameless combination of https://github.com/rndsolutions/trx-merger and https://github.com/NivNavick/trxer both rolled into a dotnet tool.
+A trx file utility with most of the code copied from https://github.com/rndsolutions/trx-merger
 
+The changes i've made are:
+
+- Turning into dotnet tool
+- Change the console app api
+- Fixed a couple of bugs in the generator
+- Changed the outputted report structure
