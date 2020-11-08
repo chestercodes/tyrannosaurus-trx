@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TyrannosaurusTrx": {
+      "commandName": "Project",
+      "commandLineArgs": "-p C:/temp/trx-files -m C:/temp/ -r C:/temp/"
+    }
+  }
+}
