@@ -56,6 +56,5 @@ OPTIONS:
 
 ## Tested with
 
-I've tested this on windows with the example-tests folder.
-
+I've tested this on windows and linux with the example-tests folder.
 
