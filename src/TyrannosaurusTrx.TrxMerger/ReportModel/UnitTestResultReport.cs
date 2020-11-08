@@ -76,13 +76,7 @@ namespace TRX_Merger.ReportModel
         {
             get
             {
-                var strings = ClassName.Split(new char[] { '.' }).ToList();
-                strings.Add(Result.TestName);
-                string id = "";
-                foreach (var s in strings)
-                    id += s;
-
-                return id;
+                return $"{ClassName.Replace(".", "")}_{Result.TestName.Replace(".", "")}";
             }
         }
 

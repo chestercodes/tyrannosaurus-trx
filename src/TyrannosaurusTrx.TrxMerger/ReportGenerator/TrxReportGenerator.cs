@@ -21,11 +21,13 @@ namespace TRX_Merger.ReportGenerator
 
             string template = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportGenerator/trx_report_template.html"));
 
+            var testRunReport = new TestRunReport(run);
+
             string result = Engine.Razor.RunCompile(
                 template,
                 "rawTemplate",
                 null,
-                new TestRunReport(run));
+                testRunReport);
             
             return result;
         }

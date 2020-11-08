@@ -1,14 +1,13 @@
 ﻿module App
+
 open System
 open System.IO
-open System.Xml.Linq
 open TRX_Merger.TrxModel
 
 type CliError =
     | TrxPathsNotSpecified
     | MergeOrReportNotSpecified
     | CouldNotFindAnyTrxPaths
-    | MultipleTrxFilesFoundAndMergePathNotSpecified
     | FailedToMergeTrxFiles of exn
 
 let log (line: string) = Console.WriteLine line ; ()
@@ -49,9 +48,7 @@ let mergeTrxFiles trxPaths =
         |> TRX_Merger.TestRunMerger.MergeTrxFiles
         |> Ok
     with
-        | ex -> 
-            sprintf "Error: %A" ex |> log
-            FailedToMergeTrxFiles ex |> Error
+        | ex -> FailedToMergeTrxFiles ex |> Error
 
 let getFileName pathOpt dirDefaultName =
     match pathOpt with
@@ -66,28 +63,24 @@ let getFileName pathOpt dirDefaultName =
         Some path
 
 let runMergeFiles (mergePathOpt: string option) (trxPaths: string list) =
-    let fileName = getFileName mergePathOpt "merged.trx"
-
     mergeTrxFiles trxPaths
     |> Result.bind (fun testRun ->
-        let mergedContents = 
-            testRun
-            |> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
-            |> fun x -> x.ToString()
-        
-        match fileName with
+        match getFileName mergePathOpt "merged.trx" with
         | None -> ()
-        | Some path -> File.WriteAllText(path, mergedContents) 
+        | Some path ->
+            let mergedContents = 
+                testRun
+                |> TRX_Merger.Utilities.TRXSerializationUtils.SerializeTestRun
+                |> fun x -> x.ToString()
+            File.WriteAllText(path, mergedContents) 
         
         Ok testRun
     )
     
 let runGenerateReport (reportPathOpt: string option) (testRun: TestRun) =
-    let html =  TRX_Merger.ReportGenerator.TrxReportGenerator.GenerateReport testRun
-    let fileName = getFileName reportPathOpt "report.html"
-    let fileName = Some "C:/temp/Some.html"
-    match fileName with
+    match getFileName reportPathOpt "report.html" with
     | None -> Ok ()
     | Some mergePath ->
+        let html =  TRX_Merger.ReportGenerator.TrxReportGenerator.GenerateReport testRun
         File.WriteAllText(mergePath, html)
         Ok ()

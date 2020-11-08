@@ -30,7 +30,7 @@ namespace TRX_Merger.ReportModel
             Dll = tests[0].Dll;
         }
 
-        public string TestClassName { get; set; }
+        public string TestClassName { get; private set; }
         public string FriendlyTestClassName
         {
             get
@@ -39,20 +39,28 @@ namespace TRX_Merger.ReportModel
             }         
         }
 
-        public List<UnitTestResultReport> Tests { get; set; }
+        public string TestClassId
+        {
+            get
+            {
+                return TestClassName.Replace(".", "_");
+            }
+        }
 
-        public string Dll { get; set; }
+        public List<UnitTestResultReport> Tests { get; private set; }
 
-        public int TotalTests { get; set; }
+        public string Dll { get; private set; }
+
+        public int TotalTests { get; private set; }
         
-        public int Passed { get; set; }
+        public int Passed { get; private set; }
 
-        public int Failed { get; set; }
+        public int Failed { get; private set; }
 
-        public int Timeout { get; set; }
+        public int Timeout { get; private set; }
         
-        public int Aborted { get; set; }
+        public int Aborted { get; private set; }
 
-        public TimeSpan Duration { get; set; }
+        public TimeSpan Duration { get; private set; }
     }
 }

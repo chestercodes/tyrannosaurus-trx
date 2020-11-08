@@ -16,4 +16,12 @@ namespace TrxTests.XUnit.Tests
             throw new System.Exception ("Ahhhhhhh!!!");
         }
     }
+
+    public class PassingTest
+    {
+        [Fact]
+        public void Test_Passes()
+        {
+        }
+    }
 }

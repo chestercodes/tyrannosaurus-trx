@@ -4,67 +4,53 @@ using TRX_Merger.TrxModel;
 
 namespace TRX_Merger.ReportModel
 {
+    public class TestName
+    {
+        public TestName(string testClass, string testMethod)
+        {
+            TestClass = testClass;
+            TestMethod = testMethod;
+        }
+        public string TestClass { get; }
+        public string TestMethod { get; }
+    }
+
     public class TestRunReport
     {
         public TestRunReport(TestRun run)
         {
             Run = run;
-            
-        }
+            TestClasses = Run.TestDefinitions.Select(td => td.TestMethod.ClassName).Distinct().ToList<string>();
 
-        public TestRun Run { get; set; }
-
-        private List<string> testClasses;
-        public List<string> TestClasses 
-        { 
-            get
+            AllFailedTests = new List<UnitTestResultReport>();
+            TestClassReports = new Dictionary<string, TestClassReport>();
+            foreach (var testClass in TestClasses)
             {
-                if(testClasses == null)
-                    testClasses = Run.TestDefinitions.Select(td => td.TestMethod.ClassName).Distinct().ToList<string>();
-                return testClasses;
-            }
-        }
-
-        private List<UnitTestResultReport> allFailedTests;
-        public List<UnitTestResultReport> AllFailedTests
-        {
-            get
-            {
-                if (allFailedTests == null)
+                var t = GetTestClassReport(testClass);
+                TestClassReports.Add(testClass, t);
+                AllFailedTests.AddRange(t.Tests.Where(r =>
                 {
-                    allFailedTests = new List<UnitTestResultReport>();
-                    TestClassReports.ToList().ForEach(
-                        t =>
-                            allFailedTests.AddRange(t.Value.Tests.Where(r => r.Result.Outcome != "Passed").ToList())); 
-                }
-                return allFailedTests;
+                    var isNotPassing = r.Result.Outcome != "Passed";
+                    return isNotPassing;
+                }).ToList());
             }
         }
 
-        private Dictionary<string, TestClassReport> testClassReports;
-        public Dictionary<string, TestClassReport> TestClassReports
-        {
-            get
-            {
-                if(testClassReports == null)
-                {
-                    testClassReports = new Dictionary<string, TestClassReport>();
-                    foreach (var testClass in TestClasses)
-                    {
-                        testClassReports.Add(testClass, GetTestClassReport(testClass));
-                    }
-                }
+        public TestRun Run { get; private set; }
 
-                return testClassReports;
-            }
-        }
+        public List<string> TestClasses { get; private set; }
+        
+        public List<UnitTestResultReport> AllFailedTests { get; private set; }
+
+        public Dictionary<string, TestClassReport> TestClassReports { get; private set; }
+
         public string TestClassReportsJson()
         {
             var test =  System.Text.Json.JsonSerializer.Serialize(TestClassReports.Select(s => s.Value).Select(
                 c => 
                     new 
                     { 
-                        ClassName = c.FriendlyTestClassName,
+                        ClassName = c.TestClassId,
                         Passed = c.Passed,
                         Failed = c.Failed,
                         Timeout = c.Timeout,
@@ -76,9 +62,11 @@ namespace TRX_Merger.ReportModel
 
         public TestClassReport GetTestClassReport(string className)
         {
-            List<string> tests = Run.TestDefinitions.Where(td => td.TestMethod.ClassName.EndsWith(className)).Select(ttdd => ttdd.TestMethod.Name).ToList();
-            
-            var results = Run.Results.Where(r => tests.Contains(r.TestName)).ToList();
+            var testIds = Run.TestDefinitions
+                    .Where(td => td.TestMethod.ClassName.EndsWith(className))
+                    .Select(ttdd => ttdd.Id).ToList();
+
+            var results = Run.Results.Where(r => testIds.Contains(r.TestId)).ToList();
            
             List<UnitTestResultReport> resultReports = new List<UnitTestResultReport>();
             foreach (var r in results)
@@ -87,7 +75,7 @@ namespace TRX_Merger.ReportModel
                     new UnitTestResultReport(r)
                     { 
                         ClassName = className,
-                        Dll = Run.TestDefinitions.Where(d => d.Name == r.TestName).FirstOrDefault().TestMethod.CodeBase
+                        Dll = Run.TestDefinitions.Where(d => d.Id == r.TestId).FirstOrDefault().TestMethod.CodeBase
                     });
             }
 

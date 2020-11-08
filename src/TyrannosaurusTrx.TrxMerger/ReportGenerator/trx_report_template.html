@@ -221,8 +221,8 @@
                     <div class="col-lg-11">
                         <h3 class="panel-title">@testClassEntry.Value.FriendlyTestClassName</h3>
                     </div>
-                    <div class="col-lg-1" style="text-align: center;cursor: pointer" onclick="collapseExpandAllFailingClick(@testClassEntry.Value.FriendlyTestClassName)">
-                        <b id="@String.Format("expandCollapse{0}", testClassEntry.Value.FriendlyTestClassName)" style="font-size: larger">+</b>
+                    <div class="col-lg-1" style="text-align: center;cursor: pointer" onclick="collapseExpandAllFailingClick(@testClassEntry.Value.TestClassId)">
+                        <b id="@String.Format("expandCollapse{0}", testClassEntry.Value.TestClassId)" style="font-size: larger">+</b>
                     </div>
                 </div>
             </div>
@@ -242,14 +242,14 @@
 
                     </div>
                     <div class="col-lg-3" style="text-align: right">
-                        <canvas id="@String.Format("chart{0}", testClassEntry.Value.FriendlyTestClassName)" width="210" height="210"></canvas>
+                        <canvas id="@String.Format("chart{0}", testClassEntry.Value.TestClassId)" width="210" height="210"></canvas>
                     </div>
                     <div class="col-lg-2" style="padding: 0px">
-                        <div id="@String.Format("legend{0}", testClassEntry.Value.FriendlyTestClassName)" class="chart-legend"></div>
+                        <div id="@String.Format("legend{0}", testClassEntry.Value.TestClassId)" class="chart-legend"></div>
                     </div>
                 </div>
 
-                <div id="@testClassEntry.Value.FriendlyTestClassName" style="display: none">
+                <div id="@testClassEntry.Value.TestClassId" style="display: none">
                     <table class="table table-striped table-hover ">
                         <thead>
                             <tr>

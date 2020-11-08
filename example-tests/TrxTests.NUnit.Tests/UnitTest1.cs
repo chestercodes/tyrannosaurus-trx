@@ -20,4 +20,18 @@ namespace TrxTests.NUnit.Tests
             throw new System.Exception ("Ahhhhhhh!!!");
         }
     }
+
+    public class FailingTests
+    {
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        [Test]
+        public void Test_Fails()
+        {
+            throw new System.Exception ("Ahhhhhhh!!!");
+        }
+    }
 }
