@@ -25,13 +25,13 @@ The cli will not run if no paths or a functionality isn't specified.
 
 To generate a report of all of the trx files in a folder `C:/some/folder` to the path `C:/some/report.html` 
 
-````
+```
 t-trx -p C:/some/folder -r C:/some/report.html
 ```
 
 To merge all of the trx files in a folder `C:/some/folder` to the path `C:/some/merged.trx` 
 
-````
+```
 t-trx -p C:/some/folder -m C:/some/merged.trx
 ```
 
