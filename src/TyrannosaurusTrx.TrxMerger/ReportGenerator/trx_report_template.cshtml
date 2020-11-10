@@ -202,13 +202,13 @@
                             @foreach (var test in Model.AllFailedTests)
                             {
                             <tr class="danger">
-                                <td id="@String.Format(" err{0}",test.TestId)" style="display:none">@test.AsJson()</td>
+                                <td id="@String.Format("err{0}",test.TestId)" style="display:none">@test.AsJson()</td>
                                 <td>@test.TestFullName</td>
                                 <!--<td>@DateTime.Parse(test.Result.StartTime).ToString("MM.dd.yyyy hh\\:mm\\:ss")</td>
                     <td>@TimeSpan.Parse(test.Result.Duration).TotalSeconds.ToString("n2") sec.</td>
                     <td>FAILED</td>-->
                                 <td>@test.ErrorMessage</td>
-                                <td><a style="cursor: pointer" onclick="showTestDetails(@String.Format(" err{0}",test.TestId))">Details</a></td>
+                                <td><a style="cursor: pointer" onclick="showTestDetails(@String.Format("err{0}",test.TestId))">Details</a></td>
 
                             </tr>
                             }
