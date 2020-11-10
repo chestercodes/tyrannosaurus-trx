@@ -57,7 +57,7 @@ let getFileName pathOpt dirDefaultName =
     | ExistingDirectory dir -> Path.Combine(dir, dirDefaultName) |> Some
     | ExistingFile path -> Some path
     | NonExistingFile path ->
-        let dir = Path.GetDirectoryName path
+        let dir = Path.GetFullPath path |> Path.GetDirectoryName 
         if not(Directory.Exists dir) then
             Directory.CreateDirectory dir |> ignore
         else ()

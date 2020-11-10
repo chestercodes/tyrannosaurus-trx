@@ -1,6 +1,6 @@
 $dir = $PsScriptRoot
 
-$packageVersion = "0.9.3"
+$packageVersion = "0.9.4"
 
 dotnet pack "$dir/TyrannosaurusTrx.fsproj" `
     -p:PackageVersion=$packageVersion `
