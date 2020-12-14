@@ -1,8 +1,8 @@
 $dir = $PsScriptRoot
 
-$packageVersion = "0.9.4"
+$packageVersion = "0.9.5"
 
-dotnet pack "$dir/TyrannosaurusTrx.fsproj" `
+dotnet pack "$dir/TyrannosaurusTrx.fsproj" --configuration Release `
     -p:PackageVersion=$packageVersion `
     -p:Authors=chestercodes `
     -p:Description="TyrannosaurusTrx is a dotnet tool fork of the TRX_Merger tool. It allows you to combine multiple TRX files in a single TRX file containing all the information from the TRX files passed to it and also to generate an html report from the TRX." `
