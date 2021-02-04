@@ -35,6 +35,20 @@ To merge all of the trx files in a folder `C:/some/folder` to the path `C:/some/
 t-trx -p C:/some/folder -m C:/some/merged.trx
 ```
 
+To do all of the above recursively 
+
+```
+t-trx -p C:/some/folder -m C:/some/merged.trx -r C:/some/report.html --recurse
+```
+
+To generate a report from a single trx file to the default report name for a directory
+
+```
+t-trx -p C:/some/folder/some.trx -r C:/some
+```
+
+
+
 ---
 
 The full usage is:
@@ -58,3 +72,9 @@ OPTIONS:
 
 I've tested this on windows and linux with the example-tests folder.
 
+## Rough changelog
+
+ version | description
+ ---     | ---
+ 0.9.5 and below | basic tool setup and migration to 3.1 and 5
+ 0.9.6 | Make github actions build and push tool

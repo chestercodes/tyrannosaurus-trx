@@ -1,0 +1,25 @@
+name: RunPackAndPushScript
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    # use ubuntu for more build minutes
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.102    
+
+    - name: Install pwsh
+      run: dotnet tool install --global PowerShell
+
+    - name: Run Build script
+      env:
+       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: pwsh ./src/TyrannosaurusTrx/BuildTool.ps1

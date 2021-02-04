@@ -1,6 +1,6 @@
 $dir = $PsScriptRoot
 
-$packageVersion = "0.9.5"
+$packageVersion = "0.9.6"
 
 dotnet pack "$dir/TyrannosaurusTrx.fsproj" --configuration Release `
     -p:PackageVersion=$packageVersion `
@@ -25,4 +25,6 @@ if($apiKey -eq $null)
     exit 1
 }
 
-dotnet nuget push $publishPath -k $apiKey -s https://api.nuget.org/v3/index.json
+ls -R $dir
+write-host "Would have run dotnet push here"
+#dotnet nuget push $publishPath -k $apiKey -s https://api.nuget.org/v3/index.json
