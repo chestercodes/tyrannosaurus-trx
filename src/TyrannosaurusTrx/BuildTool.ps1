@@ -25,6 +25,4 @@ if($apiKey -eq $null)
     exit 1
 }
 
-ls -R $dir
-write-host "Would have run dotnet push here"
-#dotnet nuget push $publishPath -k $apiKey -s https://api.nuget.org/v3/index.json
+dotnet nuget push $publishPath -k $apiKey -s https://api.nuget.org/v3/index.json
