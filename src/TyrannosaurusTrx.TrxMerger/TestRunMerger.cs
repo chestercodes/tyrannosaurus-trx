@@ -137,7 +137,7 @@ namespace TRX_Merger
                 TestLists = allTestLists,
                 ResultSummary = resultSummary,
             };
-        } 
- 
+        }
+
     }
 }

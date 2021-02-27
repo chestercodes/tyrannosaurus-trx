@@ -28,7 +28,7 @@ namespace TRX_Merger.ReportGenerator
                 "rawTemplate",
                 null,
                 testRunReport);
-            
+
             return result;
         }
     }

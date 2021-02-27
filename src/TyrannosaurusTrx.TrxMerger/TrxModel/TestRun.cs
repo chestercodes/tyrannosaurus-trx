@@ -10,7 +10,7 @@ namespace TRX_Merger.TrxModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string RunUser { get; set; } 
+        public string RunUser { get; set; }
         public Times Times { get; set; }
         public string Duration
         {

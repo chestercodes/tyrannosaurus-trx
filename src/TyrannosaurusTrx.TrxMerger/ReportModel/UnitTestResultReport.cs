@@ -17,7 +17,8 @@ namespace TRX_Merger.ReportModel
             {
                 // Test.Project.TestClass.MethodName
                 TestFullName = Result.TestName;
-            } else
+            }
+            else
             {
                 // MethodName
                 TestFullName = $"{ClassName}.{Result.TestName}";

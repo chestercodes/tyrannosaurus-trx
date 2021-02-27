@@ -36,7 +36,7 @@ namespace TRX_Merger.ReportModel
             get
             {
                 return TestClassName.Split(new char[] { '.' }).Last();
-            }         
+            }
         }
 
         public string TestClassId
@@ -52,13 +52,13 @@ namespace TRX_Merger.ReportModel
         public string Dll { get; private set; }
 
         public int TotalTests { get; private set; }
-        
+
         public int Passed { get; private set; }
 
         public int Failed { get; private set; }
 
         public int Timeout { get; private set; }
-        
+
         public int Aborted { get; private set; }
 
         public TimeSpan Duration { get; private set; }

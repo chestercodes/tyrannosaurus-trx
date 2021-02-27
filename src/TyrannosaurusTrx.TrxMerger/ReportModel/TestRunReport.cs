@@ -31,17 +31,17 @@ namespace TRX_Merger.ReportModel
         public TestRun Run { get; private set; }
 
         public List<string> TestClasses { get; private set; }
-        
+
         public List<UnitTestResultReport> AllFailedTests { get; private set; }
 
         public List<TestClassReport> TestClassReports { get; private set; }
 
         public string TestClassReportsJson()
         {
-            var test =  System.Text.Json.JsonSerializer.Serialize(TestClassReports.Select(
-                c => 
-                    new 
-                    { 
+            var test = System.Text.Json.JsonSerializer.Serialize(TestClassReports.Select(
+                c =>
+                    new
+                    {
                         ClassName = c.TestClassId,
                         Passed = c.Passed,
                         Failed = c.Failed,
@@ -50,7 +50,7 @@ namespace TRX_Merger.ReportModel
                     }).ToList());
             return test;
         }
- 
+
 
         public TestClassReport GetTestClassReport(string className)
         {
@@ -59,7 +59,7 @@ namespace TRX_Merger.ReportModel
                     .Select(ttdd => ttdd.Id).ToList();
 
             var results = Run.Results.Where(r => testIds.Contains(r.TestId)).ToList();
-           
+
             List<UnitTestResultReport> resultReports = new List<UnitTestResultReport>();
             foreach (var r in results)
             {

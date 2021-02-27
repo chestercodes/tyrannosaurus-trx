@@ -12,5 +12,5 @@ namespace TRX_Merger.TrxModel
         public string Outcome { get; set; }
         public string Timestamp { get; set; }
         public string Text { get; set; }
-    } 
+    }
 }

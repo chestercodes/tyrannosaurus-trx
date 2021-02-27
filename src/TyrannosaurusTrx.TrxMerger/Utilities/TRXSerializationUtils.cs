@@ -107,7 +107,7 @@ namespace TRX_Merger.Utilities
         internal static string SerializeAndSaveTestRun(TestRun testRun, string targetPath)
         {
             var doc = SerializeTestRun(testRun);
-            
+
             if (File.Exists(targetPath))
                 File.Delete(targetPath);
 
