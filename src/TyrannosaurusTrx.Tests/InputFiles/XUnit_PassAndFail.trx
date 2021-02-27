@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="771ed617-2be6-473c-ac20-28a36c1d2d57" name="tc@CISERVER 2021-02-27 11:41:55" runUser="CISERVER\tc" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2021-02-27T11:41:55.6542609+00:00" queuing="2021-02-27T11:41:55.6542620+00:00" start="2021-02-27T11:41:53.8059369+00:00" finish="2021-02-27T11:41:55.6673334+00:00" />
+  <TestSettings name="default" id="e71d8456-170b-4274-b78f-63d7f4ee0db1">
+    <Deployment runDeploymentRoot="tc_CISERVER_2021-02-27_11_41_55" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="dc454833-e566-450f-94a2-271d6cc63eca" testId="9f168841-4be0-d659-e554-b60a6f408d88" testName="TrxTests.XUnit.Tests.UnitTest1.Test_Fails" computerName="CISERVER" duration="00:00:00.0017774" startTime="2021-02-27T11:41:55.5165579+00:00" endTime="2021-02-27T11:41:55.5165604+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc454833-e566-450f-94a2-271d6cc63eca">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Exception : Ahhhhhhh!!!</Message>
+          <StackTrace>   at TrxTests.XUnit.Tests.UnitTest1.Test_Fails() in SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.Tests\UnitTest1.cs:line 16</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bce80dcd-d36e-4e7f-9b50-282b0e2ed869" testId="bd038de8-ff15-42a3-014a-072c47746af6" testName="TrxTests.XUnit.Tests.PassingTest.Test_Passes" computerName="CISERVER" duration="00:00:00.0045760" startTime="2021-02-27T11:41:55.4863761+00:00" endTime="2021-02-27T11:41:55.4864785+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bce80dcd-d36e-4e7f-9b50-282b0e2ed869" />
+    <UnitTestResult executionId="fbbeaf7f-3a68-4bc9-a55f-45faf50bddaf" testId="a6f87ae5-8379-83ae-29a4-22b3cbc1f898" testName="TrxTests.XUnit.Tests.UnitTest1.Test_Passes" computerName="CISERVER" duration="00:00:00.0045878" startTime="2021-02-27T11:41:55.4910600+00:00" endTime="2021-02-27T11:41:55.4910614+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fbbeaf7f-3a68-4bc9-a55f-45faf50bddaf" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TrxTests.XUnit.Tests.UnitTest1.Test_Fails" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.xunit.tests\bin\debug\netcoreapp3.1\trxtests.xunit.tests.dll" id="9f168841-4be0-d659-e554-b60a6f408d88">
+      <Execution id="dc454833-e566-450f-94a2-271d6cc63eca" />
+      <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.Tests\bin\Debug\netcoreapp3.1\TrxTests.XUnit.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TrxTests.XUnit.Tests.UnitTest1" name="Test_Fails" />
+    </UnitTest>
+    <UnitTest name="TrxTests.XUnit.Tests.UnitTest1.Test_Passes" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.xunit.tests\bin\debug\netcoreapp3.1\trxtests.xunit.tests.dll" id="a6f87ae5-8379-83ae-29a4-22b3cbc1f898">
+      <Execution id="fbbeaf7f-3a68-4bc9-a55f-45faf50bddaf" />
+      <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.Tests\bin\Debug\netcoreapp3.1\TrxTests.XUnit.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TrxTests.XUnit.Tests.UnitTest1" name="Test_Passes" />
+    </UnitTest>
+    <UnitTest name="TrxTests.XUnit.Tests.PassingTest.Test_Passes" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.xunit.tests\bin\debug\netcoreapp3.1\trxtests.xunit.tests.dll" id="bd038de8-ff15-42a3-014a-072c47746af6">
+      <Execution id="bce80dcd-d36e-4e7f-9b50-282b0e2ed869" />
+      <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.Tests\bin\Debug\netcoreapp3.1\TrxTests.XUnit.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TrxTests.XUnit.Tests.PassingTest" name="Test_Passes" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="9f168841-4be0-d659-e554-b60a6f408d88" executionId="dc454833-e566-450f-94a2-271d6cc63eca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bd038de8-ff15-42a3-014a-072c47746af6" executionId="bce80dcd-d36e-4e7f-9b50-282b0e2ed869" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6f87ae5-8379-83ae-29a4-22b3cbc1f898" executionId="fbbeaf7f-3a68-4bc9-a55f-45faf50bddaf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="2" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.0 (64-bit .NET Core 3.1.11)&#xD;
+[xUnit.net 00:00:00.62]   Discovering: TrxTests.XUnit.Tests&#xD;
+[xUnit.net 00:00:00.66]   Discovered:  TrxTests.XUnit.Tests&#xD;
+[xUnit.net 00:00:00.66]   Starting:    TrxTests.XUnit.Tests&#xD;
+[xUnit.net 00:00:00.77]       System.Exception : Ahhhhhhh!!!&#xD;
+[xUnit.net 00:00:00.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.77]         SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.Tests\UnitTest1.cs(16,0): at TrxTests.XUnit.Tests.UnitTest1.Test_Fails()&#xD;
+[xUnit.net 00:00:00.77]   Finished:    TrxTests.XUnit.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="CISERVER" outcome="Error" timestamp="2021-02-27T11:41:55.5132648+00:00">
+        <Text>[xUnit.net 00:00:00.77]     TrxTests.XUnit.Tests.UnitTest1.Test_Fails [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

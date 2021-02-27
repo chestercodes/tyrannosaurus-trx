@@ -1,0 +1,3 @@
+module Tests
+
+open MergeTests

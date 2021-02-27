@@ -71,6 +71,9 @@ namespace TRX_Merger
             };
             bool resultSummaryPassed = true;
 
+            var passedLabel = "Completed";
+            var failedLabel = "Failed";
+
             foreach (var tr in testRuns)
             {
                 allResults = allResults.Concat(tr.Results).ToList();

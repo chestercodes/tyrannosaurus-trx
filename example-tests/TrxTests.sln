@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrxTests.NUnit.AllPass.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrxTests.XUnit.AllPass.Tests", "TrxTests.XUnit.AllPass.Tests\TrxTests.XUnit.AllPass.Tests.csproj", "{963DC332-5E54-47A1-9CA6-B64A10C3A837}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrxTests.NUnit.SomeIgnored.Tests", "TrxTests.NUnit.SomeIgnored.Tests\TrxTests.NUnit.SomeIgnored.Tests.csproj", "{24492F9A-248E-4C4F-9219-588CDFB959E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{963DC332-5E54-47A1-9CA6-B64A10C3A837}.Release|x64.Build.0 = Release|Any CPU
 		{963DC332-5E54-47A1-9CA6-B64A10C3A837}.Release|x86.ActiveCfg = Release|Any CPU
 		{963DC332-5E54-47A1-9CA6-B64A10C3A837}.Release|x86.Build.0 = Release|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Debug|x64.Build.0 = Debug|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Debug|x86.Build.0 = Debug|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Release|x64.ActiveCfg = Release|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Release|x64.Build.0 = Release|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{24492F9A-248E-4C4F-9219-588CDFB959E3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
