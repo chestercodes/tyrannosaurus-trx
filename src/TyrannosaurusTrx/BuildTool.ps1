@@ -1,5 +1,13 @@
 $dir = $PsScriptRoot
 
+$testsProject = resolve-path "$dir/../TyrannosaurusTrx.Tests/TyrannosaurusTrx.Tests.fsproj"
+
+dotnet test $testsProject
+if($LASTEXITCODE -ne 0){
+    write-error "Tests failed!"
+    exit 1
+}
+
 $packageVersion = "0.9.6"
 
 dotnet pack "$dir/TyrannosaurusTrx.fsproj" --configuration Release `
