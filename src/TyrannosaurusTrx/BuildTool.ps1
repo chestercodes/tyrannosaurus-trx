@@ -8,7 +8,7 @@ if($LASTEXITCODE -ne 0){
     exit 1
 }
 
-$packageVersion = "0.9.6"
+$packageVersion = "1.0.0"
 
 dotnet pack "$dir/TyrannosaurusTrx.fsproj" --configuration Release `
     -p:PackageVersion=$packageVersion `

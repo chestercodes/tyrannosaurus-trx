@@ -96,7 +96,7 @@ namespace TRX_Merger
                 }
 
 
-                resultSummaryPassed &= (tr.ResultSummary.Outcome == "Passed" || tr.ResultSummary.Outcome == "Completed");
+                resultSummaryPassed &= (tr.ResultSummary.Outcome == "Passed" || tr.ResultSummary.Outcome == passedLabel);
                 resultSummary.RunInfos = resultSummary.RunInfos.Concat(tr.ResultSummary.RunInfos).ToList();
                 resultSummary.Counters.Aborted += tr.ResultSummary.Counters.Aborted;
                 resultSummary.Counters.Completed += tr.ResultSummary.Counters.Completed;
@@ -116,7 +116,7 @@ namespace TRX_Merger
 
             }
 
-            resultSummary.Outcome = resultSummaryPassed ? "Completed" : "Failed";
+            resultSummary.Outcome = resultSummaryPassed ? passedLabel : failedLabel;
 
 
             return new TestRun
