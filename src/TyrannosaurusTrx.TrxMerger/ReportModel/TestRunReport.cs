@@ -19,7 +19,8 @@ namespace TRX_Merger.ReportModel
                 TestClassReports.Add(t);
                 AllFailedTests.AddRange(t.Tests.Where(r =>
                 {
-                    var isNotPassing = r.Result.Outcome != "Passed";
+                    var result = r.Result.Outcome.ToLower();
+                    var isNotPassing = result != "passed" && result != "notexecuted";
                     return isNotPassing;
                 }).ToList());
             }
