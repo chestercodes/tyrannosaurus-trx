@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="75653709-d18e-41c7-b1e0-ceefda2b1185" name="tc@CISERVER 2021-02-27 11:41:51" runUser="CISERVER\tc" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2021-02-27T11:41:51.7115821+00:00" queuing="2021-02-27T11:41:51.7115829+00:00" start="2021-02-27T11:41:48.5436064+00:00" finish="2021-02-27T11:41:51.7184936+00:00" />
+  <TestSettings name="default" id="6c32a95e-c8ac-44bb-bd5f-71f1dda84adf">
+    <Deployment runDeploymentRoot="tc_CISERVER_2021-02-27_11_41_51" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" testId="0b25de99-6635-825a-0a07-cd8aec2c4ecc" testName="TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_Passes_Easily" computerName="CISERVER" duration="00:00:00.0024189" startTime="2021-02-27T11:41:51.6031031+00:00" endTime="2021-02-27T11:41:51.6032527+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" />
+    <UnitTestResult executionId="b2067c84-9a35-4916-bc36-03b28c193123" testId="edc103f8-3596-d75b-2cf2-fad3c4424624" testName="TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_AlsoPasses_Easily" computerName="CISERVER" duration="00:00:00.0000621" startTime="2021-02-27T11:41:51.6074000+00:00" endTime="2021-02-27T11:41:51.6074007+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b2067c84-9a35-4916-bc36-03b28c193123" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_AlsoPasses_Easily" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.xunit.allpass.tests\bin\debug\netcoreapp3.1\trxtests.xunit.allpass.tests.dll" id="edc103f8-3596-d75b-2cf2-fad3c4424624">
+      <Execution id="b2067c84-9a35-4916-bc36-03b28c193123" />
+      <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.AllPass.Tests\bin\Debug\netcoreapp3.1\TrxTests.XUnit.AllPass.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TrxTests.XUnit.AllPass.Tests.UnitTest1" name="Test_AlsoPasses_Easily" />
+    </UnitTest>
+    <UnitTest name="TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_Passes_Easily" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.xunit.allpass.tests\bin\debug\netcoreapp3.1\trxtests.xunit.allpass.tests.dll" id="0b25de99-6635-825a-0a07-cd8aec2c4ecc">
+      <Execution id="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" />
+      <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.AllPass.Tests\bin\Debug\netcoreapp3.1\TrxTests.XUnit.AllPass.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TrxTests.XUnit.AllPass.Tests.UnitTest1" name="Test_Passes_Easily" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="0b25de99-6635-825a-0a07-cd8aec2c4ecc" executionId="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="edc103f8-3596-d75b-2cf2-fad3c4424624" executionId="b2067c84-9a35-4916-bc36-03b28c193123" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.3+1b45f5407b (64-bit .NET Core 3.1.11)&#xD;
+[xUnit.net 00:00:01.91]   Discovering: TrxTests.XUnit.AllPass.Tests&#xD;
+[xUnit.net 00:00:01.94]   Discovered:  TrxTests.XUnit.AllPass.Tests&#xD;
+[xUnit.net 00:00:01.95]   Starting:    TrxTests.XUnit.AllPass.Tests&#xD;
+[xUnit.net 00:00:02.03]   Finished:    TrxTests.XUnit.AllPass.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

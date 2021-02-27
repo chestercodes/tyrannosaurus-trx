@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="be42be04-2f3e-4f5d-b163-29e97b0cc1da" name="tc@CISERVER 2021-02-27 11:41:43" runUser="CISERVER\tc" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2021-02-27T11:41:43.0389155+00:00" queuing="2021-02-27T11:41:43.0389162+00:00" start="2021-02-27T11:41:41.4927766+00:00" finish="2021-02-27T11:41:43.0476240+00:00" />
+  <TestSettings name="default" id="11dda5a5-27b1-47bf-bdd5-18036d314735">
+    <Deployment runDeploymentRoot="tc_CISERVER_2021-02-27_11_41_43" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="bef5c7e7-af2e-4e68-b89e-4d8b3af0f0ad" testId="27484d99-6ea2-0a71-0cdf-658bbd72166a" testName="Test_DoesSomething_AndPasses" computerName="CISERVER" duration="00:00:00.0002320" startTime="2021-02-27T11:41:42.0000000+00:00" endTime="2021-02-27T11:41:42.0000000+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bef5c7e7-af2e-4e68-b89e-4d8b3af0f0ad">
+      <Output>
+        <ErrorInfo>
+          <Message>Ignore a test</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ecbe0e2f-524f-4fee-8562-193247d62760" testId="b2ea74f2-e668-c5f9-c267-9520d766d6ac" testName="Test_DoesSomething_AndAlsoPasses" computerName="CISERVER" duration="00:00:00.0324490" startTime="2021-02-27T11:41:42.0000000+00:00" endTime="2021-02-27T11:41:42.0000000+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ecbe0e2f-524f-4fee-8562-193247d62760" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Test_DoesSomething_AndPasses" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.nunit.someignored.tests\bin\debug\netcoreapp3.1\trxtests.nunit.someignored.tests.dll" id="27484d99-6ea2-0a71-0cdf-658bbd72166a">
+      <Execution id="bef5c7e7-af2e-4e68-b89e-4d8b3af0f0ad" />
+      <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.NUnit.SomeIgnored.Tests\bin\Debug\netcoreapp3.1\TrxTests.NUnit.SomeIgnored.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="TrxTests.NUnit.SomeIgnored.Tests.Tests" name="Test_DoesSomething_AndPasses" />
+    </UnitTest>
+    <UnitTest name="Test_DoesSomething_AndAlsoPasses" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.nunit.someignored.tests\bin\debug\netcoreapp3.1\trxtests.nunit.someignored.tests.dll" id="b2ea74f2-e668-c5f9-c267-9520d766d6ac">
+      <Execution id="ecbe0e2f-524f-4fee-8562-193247d62760" />
+      <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.NUnit.SomeIgnored.Tests\bin\Debug\netcoreapp3.1\TrxTests.NUnit.SomeIgnored.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="TrxTests.NUnit.SomeIgnored.Tests.Tests" name="Test_DoesSomething_AndAlsoPasses" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="27484d99-6ea2-0a71-0cdf-658bbd72166a" executionId="bef5c7e7-af2e-4e68-b89e-4d8b3af0f0ad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2ea74f2-e668-c5f9-c267-9520d766d6ac" executionId="ecbe0e2f-524f-4fee-8562-193247d62760" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 3.16.1.0: Test execution started&#xD;
+Running all tests in SomeDir\tyrannosaurus-trx\example-tests\TrxTests.NUnit.SomeIgnored.Tests\bin\Debug\netcoreapp3.1\TrxTests.NUnit.SomeIgnored.Tests.dll&#xD;
+   NUnit3TestExecutor converted 2 of 2 NUnit test cases&#xD;
+NUnit Adapter 3.16.1.0: Test execution complete&#xD;
+Test 'Test_DoesSomething_AndPasses' was skipped in the test run.&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
