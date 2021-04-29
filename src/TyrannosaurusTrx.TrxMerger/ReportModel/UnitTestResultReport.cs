@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web;
 using TRX_Merger.TrxModel;
 
 namespace TRX_Merger.ReportModel
@@ -91,7 +94,8 @@ namespace TRX_Merger.ReportModel
         {
             get
             {
-                return $"{ClassName.Replace(".", "")}_{Result.TestName.Replace(".", "")}";
+                var str =  $"{ClassName.Replace(".", "")}_{Result.TestName.Replace(".", "")}";
+                return Regex.Replace(str, "[^a-zA-Z0-9-_]", string.Empty);
             }
         }
 
