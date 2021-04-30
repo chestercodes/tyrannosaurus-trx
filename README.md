@@ -79,3 +79,4 @@ I've tested this on windows and linux with the example-tests folder.
  0.9.5 and below | basic tool setup and migration to 3.1 and 5
  0.9.6 | Make github actions build and push tool
  1.0.0 | Added test, removed old code and merged in PR that fixed the skipped tests and completed label
+ 1.0.1 | Fixed bug relating to parameterised test names creating invalid chars for the HTML

@@ -5,11 +5,11 @@
     <Deployment runDeploymentRoot="tc_CISERVER_2021-02-27_11_41_51" />
   </TestSettings>
   <Results>
-    <UnitTestResult executionId="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" testId="0b25de99-6635-825a-0a07-cd8aec2c4ecc" testName="TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_Passes_Easily" computerName="CISERVER" duration="00:00:00.0024189" startTime="2021-02-27T11:41:51.6031031+00:00" endTime="2021-02-27T11:41:51.6032527+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" />
+    <UnitTestResult executionId="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" testId="0b25de99-6635-825a-0a07-cd8aec2c4ecc" testName="TrxTests.XUnit.AllPass.Tests.ParamTests.Test_Passes_Easily(b: False, i: 2)" computerName="CISERVER" duration="00:00:00.0024189" startTime="2021-02-27T11:41:51.6031031+00:00" endTime="2021-02-27T11:41:51.6032527+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="730b8cf1-d7e1-4994-9e54-3b1f367b81fa" />
     <UnitTestResult executionId="b2067c84-9a35-4916-bc36-03b28c193123" testId="edc103f8-3596-d75b-2cf2-fad3c4424624" testName="TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_AlsoPasses_Easily" computerName="CISERVER" duration="00:00:00.0000621" startTime="2021-02-27T11:41:51.6074000+00:00" endTime="2021-02-27T11:41:51.6074007+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b2067c84-9a35-4916-bc36-03b28c193123" />
   </Results>
   <TestDefinitions>
-    <UnitTest name="TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_AlsoPasses_Easily" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.xunit.allpass.tests\bin\debug\netcoreapp3.1\trxtests.xunit.allpass.tests.dll" id="edc103f8-3596-d75b-2cf2-fad3c4424624">
+    <UnitTest name="TrxTests.XUnit.AllPass.Tests.ParamTests.Test_Passes_Easily(b: False, i: 2)" storage="SomeDir\tyrannosaurus-trx\example-tests\trxtests.xunit.allpass.tests\bin\debug\netcoreapp3.1\trxtests.xunit.allpass.tests.dll" id="edc103f8-3596-d75b-2cf2-fad3c4424624">
       <Execution id="b2067c84-9a35-4916-bc36-03b28c193123" />
       <TestMethod codeBase="SomeDir\tyrannosaurus-trx\example-tests\TrxTests.XUnit.AllPass.Tests\bin\Debug\netcoreapp3.1\TrxTests.XUnit.AllPass.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TrxTests.XUnit.AllPass.Tests.UnitTest1" name="Test_AlsoPasses_Easily" />
     </UnitTest>

@@ -92,8 +92,12 @@ namespace TRX_Merger.ReportModel
         {
             get
             {
-                var str =  $"{ClassName.Replace(".", "")}_{Result.TestName.Replace(".", "")}";
-                return Regex.Replace(str, "[^a-zA-Z0-9-_]", string.Empty);
+                // examples of TestName can be
+                // TrxTests.XUnit.AllPass.Tests.UnitTest1.Test_Passes_Easily
+                //  TrxTests.XUnit.AllPass.Tests.ParamTests.Test_Passes_Easily(b: False, i: 2)
+                var str =  $"{ClassName}_{Result.TestName}".Replace("-", "negative");
+                var sanitised = Regex.Replace(str, "[^a-zA-Z0-9-_]", "_");
+                return sanitised;
             }
         }
 
