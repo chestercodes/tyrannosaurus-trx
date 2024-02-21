@@ -1,4 +1,4 @@
-0# tyrannosaurus-trx
+# tyrannosaurus-trx
 
 A trx file utility with most of the code copied from https://github.com/rndsolutions/trx-merger
 
