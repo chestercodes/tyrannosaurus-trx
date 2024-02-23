@@ -82,3 +82,4 @@ I've tested this on windows and linux with the example-tests folder.
  1.0.1 | Fixed bug relating to parameterised test names creating invalid chars for the HTML
  1.0.2 | Added .Net 6.0 Target
  1.1.0 | Added .Net 7.0 Target and dropped support for 5 as MS no longer supports it
+ 1.2.0 | Added .Net 8.0 Target and dropped support for netcoreapp3.1 as MS no longer supports it (Ended Dec 13, 2022)
