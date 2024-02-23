@@ -35,4 +35,4 @@ CMD dotnet run --framework net8.0 -- -p ($env:TRX_TESTSDIR) --recurse -m ($env:T
 
 FROM base as publish
 
-CMD pwsh ./src/TyrannosaurusTrx/BuildTool.ps1
+CMD pwsh /home/app/src/TyrannosaurusTrx/BuildTool.ps1
