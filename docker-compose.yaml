@@ -1,0 +1,17 @@
+services:
+  base:
+    build:
+      context: .
+      target: base
+    volumes:
+      - ./out/:/home/app/out
+    environment:
+      MYSQL_HOST: mysql
+  publish:
+    build:
+      context: .
+      target: publish
+    # volumes:
+    #   - ./out/:/home/app/out
+    environment:
+      NUGET_API_KEY: ${NUGET_API_KEY}
