@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 as base
+FROM mcr.microsoft.com/dotnet/sdk:9.0 as base
 SHELL ["pwsh", "-command"]
 
 WORKDIR /home/app
@@ -31,7 +31,7 @@ RUN pwsh example-tests/RunTests.ps1
 
 WORKDIR /home/app/src/TyrannosaurusTrx
 
-CMD dotnet run --framework net8.0 -- -p ($env:TRX_TESTSDIR) --recurse -m ($env:TRX_OUTDIR) -r ($env:TRX_OUTDIR)
+CMD dotnet run --framework net9.0 -- -p ($env:TRX_TESTSDIR) --recurse -m ($env:TRX_OUTDIR) -r ($env:TRX_OUTDIR)
 
 FROM base as publish
 
